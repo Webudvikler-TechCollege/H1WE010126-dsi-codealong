@@ -1,0 +1,29 @@
+{
+  "name": "h1we010126-dsi-codealong",
+  "version": "1.0.0",
+  "description": "Code Along repo for DSI",
+  "keywords": [
+    "typescript",
+    "node"
+  ],
+  "homepage": "https://github.com/Webudvikler-TechCollege/H1WE010126-dsi-codealong#readme",
+  "bugs": {
+    "url": "https://github.com/Webudvikler-TechCollege/H1WE010126-dsi-codealong/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Webudvikler-TechCollege/H1WE010126-dsi-codealong.git"
+  },
+  "license": "ISC",
+  "author": "Heinz K",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.9.1",
+    "tsx": "^4.22.3",
+    "typescript": "^6.0.3"
+  }
+}
