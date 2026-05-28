@@ -1,11 +1,24 @@
-import http, { IncomingMessage, ServerResponse } from 'http'
+import express from 'express'
+import type { Request, Response } from 'express'
+const app = express()
+const port = 4000
 
-const server = http.createServer((request: IncomingMessage, response: ServerResponse) => {
-    response.writeHead(200, { 'Content-type': 'text/plain' })
-    response.end('Hello world')
-    console.log('Server responded with Hello World')
+
+app.get("/", (req: Request, res: Response) => {
+    res.send('Kalder homepage')
 })
 
-server.listen(4000, () => {
-    console.log(`Server is running on port http://localhost:4000`)
+app.get("/test/:id", (req: Request, res: Response) => {
+    const { id } = req.params
+    res.send(`Kalder testside: ${id}`)
+})
+
+app.use((req: Request, res:Response) => {
+    res.send({
+        message: '404 - Bad request'
+    })
+})
+
+app.listen(port, () => {
+    console.log(`Server is running on port http://localhost:${port}`);  
 })
