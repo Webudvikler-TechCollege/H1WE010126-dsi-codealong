@@ -1,11 +1,17 @@
 import express from 'express'
 import type { Request, Response } from 'express'
 import { carRoutes } from './routes/carRoutes.js'
+import dotenv from 'dotenv'
+import { postRoutes } from './routes/postRoutes.js'
+dotenv.config()
 
 // Opretter express objekt
 const app = express()
+app.use(express.urlencoded({ extended: true }))
+app.use(express.json());
+
 // Sætter port
-const port = 4000
+const port = process.env.PORT || 4000
 
 // Route til root
 app.get("/", (req: Request, res: Response) => {
@@ -13,6 +19,7 @@ app.get("/", (req: Request, res: Response) => {
 })
 
 // Anvender opdelte routes
+app.use("/posts", postRoutes)
 app.use("/cars", carRoutes)
 
 // Route til 404
