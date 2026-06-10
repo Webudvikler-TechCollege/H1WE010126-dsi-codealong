@@ -2,7 +2,8 @@ import express from 'express'
 import type { Request, Response } from 'express'
 import { carRoutes } from './routes/carRoutes.js'
 import dotenv from 'dotenv'
-import { postRoutes } from './routes/postRoutes.js'
+import { authRoutes } from './routes/authRoutes.js'
+import { userRoutes } from './routes/userRoutes.js'
 dotenv.config()
 
 // Opretter express objekt
@@ -19,7 +20,8 @@ app.get("/", (req: Request, res: Response) => {
 })
 
 // Anvender opdelte routes
-app.use("/posts", postRoutes)
+app.use("/", authRoutes)
+app.use("/users", userRoutes)
 app.use("/cars", carRoutes)
 
 // Route til 404

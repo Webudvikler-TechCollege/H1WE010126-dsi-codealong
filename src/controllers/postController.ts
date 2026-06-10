@@ -5,12 +5,8 @@ class PostController {
     getRecords = async (req: Request, res: Response) => {
         try {
             const data = await prisma.post.findMany({
-                select: {
-                    id: true,
-                    title: true
-                },
-                orderBy: {
-                    title: 'asc'
+                include: {
+                    userRel: true
                 }
             })
             return res.json(data);
@@ -83,6 +79,21 @@ class PostController {
         } catch (error) {
             console.error(`Fejl! Kunne ikke opdatere post: ${error}`)
         }
+    }
+
+    deleteRecord = async (req: Request, res: Response) => {
+        const id = Number(req.params.id)
+
+        try {
+            const data = await prisma.post.delete({
+                where: { id }
+            })
+            res.send(data)
+        } catch (error) {
+            console.error(`Kan ikke slette posten: ${error}`);
+            
+        }
+        
     }
 
 }
